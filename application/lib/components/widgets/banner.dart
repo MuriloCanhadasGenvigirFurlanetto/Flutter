@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 
 class BannerWidget extends StatelessWidget {
-  final String title;
+  final String imagePath; // local asset path
+  final String? title;    // optional text overlay
 
-  const BannerWidget({super.key, required this.title});
+  const BannerWidget({
+    super.key,
+    required this.imagePath,
+    this.title,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +17,6 @@ class BannerWidget extends StatelessWidget {
       margin: const EdgeInsets.only(right: 12),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16),
-        color: const Color.fromARGB(131, 239, 83, 80),
         boxShadow: [
           BoxShadow(
             color: const Color.fromARGB(28, 0, 0, 0),
@@ -21,16 +25,25 @@ class BannerWidget extends StatelessWidget {
           ),
         ],
       ),
-      padding: const EdgeInsets.all(16),
-      child: Center(
-        child: Text(
-          title,
-          style: const TextStyle(
-            color: Colors.white,
-            fontSize: 18,
-            fontWeight: FontWeight.bold,
-          ),
-          textAlign: TextAlign.center,
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(16),
+        child: Stack(
+          alignment: Alignment.center,
+          children: [
+            // local asset image
+            Image.asset(
+              imagePath,
+              width: 400,
+              fit: BoxFit.cover,
+            ),
+            // optional semi-transparent overlay with text
+            if (title != null)
+              Container(
+                color: Colors.black.withOpacity(0.4),
+                width: double.infinity,
+                padding: const EdgeInsets.all(16),
+              ),
+          ],
         ),
       ),
     );

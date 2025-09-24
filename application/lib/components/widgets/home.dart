@@ -26,9 +26,9 @@ class HomePage extends StatelessWidget {
                 child: ListView(
                   scrollDirection: Axis.horizontal,
                   children: const [
-                    BannerWidget(title: "Doe sangue, salve vidas!"),
-                    BannerWidget(title: "Julho Vermelho: Participe!"),
-                    BannerWidget(title: "Um gesto simples, um impacto gigante."),
+                    BannerWidget(title: "Doe sangue, salve vidas!", imagePath: 'assets/img_1.jpg'),
+                    BannerWidget(title: "Julho Vermelho: Participe!", imagePath: 'assets/img_2.jpg'),
+                    BannerWidget(title: "Um gesto simples, um impacto gigante.", imagePath: 'assets/img_3.jpg'),
                   ],
                 ),
               ),
